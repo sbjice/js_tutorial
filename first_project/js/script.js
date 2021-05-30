@@ -69,6 +69,8 @@ console.log(`${typeof(4 + "5")},${4 + "5"}`);
 console.log(`${typeof(4 + +"5")},${4 + +"5"}`);
 */
 
+
+/*
 let incr = 10,
     decr = 10;
 
@@ -80,3 +82,58 @@ console.log(incr);
 console.log('postfix');
 console.log(decr++);
 console.log(decr);
+*/
+
+
+// condition code snippet
+/*
+const num = 50;
+
+if (num < 49) {
+    console.log("Error");
+} else if (num > 100){
+    console.log("Too Much");
+} else {
+    console.log("Ok!");
+}
+
+// ternary operator
+(num === 50) ? console.log("Ok!") : console.log("Error");
+*/
+
+
+// switch operator
+/*
+const num = 50;
+
+switch (num) {
+    case 49:
+        console.log("Error");
+        break;
+    case 50:
+        console.log("Ok!");
+        break;
+    default:
+        console.log("No case for given num");
+        break;
+}
+*/
+
+let num = 50;
+
+// while (num < 55) {
+//     num++;
+//     console.log(num);
+// }
+
+// do {
+//     num++;
+//     console.log(num);
+// }
+// while (num < 55);
+
+// for (let i = 1; i < 8; i++){
+//     console.log(i);
+// }
+
+
