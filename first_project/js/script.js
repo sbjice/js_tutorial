@@ -119,7 +119,7 @@ switch (num) {
 }
 */
 
-let num = 50;
+// let num = 50;
 
 // while (num < 55) {
 //     num++;
@@ -166,3 +166,110 @@ const calc = a => a * a ;
 calc(4);
 
 */
+
+
+// callback function
+/*
+function learnJS(lang, callback){
+    console.log(`I learn ${lang}`);
+    callback();
+}
+
+learnJS("JavaScript",(str = "I think i will learn it well") => console.log(str));
+*/
+
+
+
+// object destructuring
+/*
+const obj = {
+    name: "John",
+    age: 25,
+    isMarried: "not married",
+    colors: {
+        border: "black",
+        bg: "red",
+    },
+    sayHello: function () { // own method creation
+        console.log("Hello, i am " + this.name +
+            ", i am " + this.age,
+            " and i am " + this.isMarried);
+    }
+};
+
+delete obj.sayHello;
+console.log(obj);
+
+for (let key in obj) {
+    console.log(obj[key]);
+}
+
+obj.keys() // has length
+const {border, bg} = obj.colors;
+
+*/
+
+
+// working with arrays
+/*
+let arr = [2, 4, 6, 8, 10];
+for (let val of arr) {
+    console.log(val);
+}
+
+arr.forEach(function(item, index, array){
+    // item, index, array are parameters available by default in forEach function
+})
+
+
+let str = "23,45,56,67,89,908";
+let values = str.split(",");
+let joined = values.join(";");
+
+
+values.sort(); // sorts as strings by default, accepts callback with two arguments 
+function compareNum(a, b) {
+    return a - b;
+}
+values.sort(compareNum); // sorts numeric values correctly
+
+*/
+
+
+// working with sending parmeters by value, by ref
+
+// function that copies keys and values of first object into second objects
+// it creates shallow copy if used without recursion
+
+const x = {
+    a: 2,
+    b: 4,
+    c: 6,
+};
+
+const y = {
+    d: 0,
+};
+
+console.log(Object.assign(y, x));
+
+const old = [1, 2, 3];
+const newOne = old.slice(); // deep copy of array
+
+const arr1 = [1, 2, 3], arr2 = [4, 5, 6],
+        arr3 = [...arr1, ...arr2]; // ... - spread 
+        
+function log(a, b, c) {
+    console.log(a);
+    console.log(b);
+    console.log(c);
+}
+const num = [1, 2, 3];
+log(...num); // spread
+
+
+const q = {
+    one: 1,
+    two: 2,
+};
+const newObj = { ...q }; // spread
