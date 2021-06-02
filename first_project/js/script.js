@@ -137,3 +137,32 @@ let num = 50;
 // }
 
 
+// function syntax 
+/*
+function showFirstMessage(text) {
+    console.log(text);
+}
+
+showFirstMessage("Hello World!");
+*/
+
+// function exression
+/*
+let fun = function(text) {
+    console.log(text);
+};
+
+fun("Hello!");
+*/
+
+
+// arrow function
+/*
+const calc = (a, b) => { return a + b; };
+calc(4, 5);
+const calc = (a, b) => a + b ;
+calc(4, 5);
+const calc = a => a * a ;
+calc(4);
+
+*/
