@@ -241,6 +241,7 @@ values.sort(compareNum); // sorts numeric values correctly
 // function that copies keys and values of first object into second objects
 // it creates shallow copy if used without recursion
 
+/*
 const x = {
     a: 2,
     b: 4,
@@ -273,3 +274,5 @@ const q = {
     two: 2,
 };
 const newObj = { ...q }; // spread
+
+*/
