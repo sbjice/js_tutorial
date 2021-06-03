@@ -64,11 +64,18 @@ const personalMovieDB = {
         }
     },
     writeYourGenres: function() {
+<<<<<<< HEAD
         // can be done via splittin comma separated string
         for (let i=0; i < 3; i++) {
             let genre;
             while (genre == null || genre == ""){
                 genre = prompt(`Ваш любимый жанр под номером ${i + 1}?`, "");
+=======
+        for (let i=0; i < 3; i++) {
+            let genre;
+            while (genre == null || genre == ""){
+                genre = prompt(`Ваш любимый жанр под номером ${i + 1}?`, "")
+>>>>>>> 9204dc9fc20679fa3ef765cb236c053a77708e64
             }
             this.genres.push(genre);
             // this.genres[i] = genre;
