@@ -13,7 +13,7 @@ const personalMovieDB = {
 function start() {
     while (numberOfFilms == " " ||
         numberOfFilms == null ||
-        typeof (numberOfFilms) != "number") { // isNan(numberOfFilms)
+        isNaN(numberOfFilms)) { 
             numberOfFilms = +prompt("Сколько фильмов Вы уже посмотрели?", "");
     }
     personalMovieDB.count = numberOfFilms;

@@ -276,3 +276,22 @@ const q = {
 const newObj = { ...q }; // spread
 
 */
+
+// OOP Basics
+/*
+const soldier = {
+    health: 400,
+    armor: 100, 
+    sayHello: function() {
+        console.log("Hello");
+    }
+};
+
+// const john = {
+//     health: 100,
+// };
+// john.__proto__ = soldier; // deprecated
+// Object.setPrototypeOf(john, soldier); // set proto dimanically
+
+const john = Object.create(soldier);
+*/
