@@ -362,7 +362,8 @@ let x = 5;
 alert(x++); // 5
 // 2)
 [] + false - null + true;
-// "-" makes interpretator use expression as mathematical, if any of operands in expression gives non-numeric value, the expression will be NaN
+// "-" makes interpretator use expression as mathematical, 
+// if any of operands in expression gives non-numeric value, the expression will be NaN
 console.log(typeof ([] + false - null + true)); // number
 console.log(typeof ([] + false - true)); // number
 console.log(typeof ([] + false - null)); // number, NaN,  
@@ -400,3 +401,17 @@ console.log("Ёжик" > "яблоко"); //false, lexicographical comparison
 console.log(0 || "" || 2 || undefined || true || falsе ); //2 , first truthy
 
 */
+
+// dom, video 28
+const box = document.getElementById("uid");
+const buttons = document.getElementsByTagName("button");
+const circles = document.getElementsByClassName("circles");
+const hearts = document.querySelectorAll(".heart");
+const heart = document.querySelector(".heart"); // first element with given selector
+hearts.forEach(item => {
+    console.log(item);
+});
+
+
+
+
