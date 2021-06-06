@@ -62,27 +62,47 @@ document.addEventListener("DOMContentLoaded", () => { // create event listener
         return num;
     }
 
-    function setClock(selector, endTime) {
+    // function setClock(selector, endTime) {
+    //     const timer = document.querySelector(selector),
+    //         days = timer.querySelector("#days"),
+    //         hours = timer.querySelector("#days"),
+    //         minutes = timer.querySelector("#minutes"),
+    //         seconds = timer.querySelector("#seconds"),
+    //         timerId = setInterval(updateClock, 1000);
+
+    //     updateClock();
+
+    //     function updateClock(){
+    //         const currentTime = getTimeRemaining(endTime);
+    //             days.innerHTML = pasteZero(currentTime.days);
+    //             hours.innerHTML = pasteZero(currentTime.hours);
+    //             minutes.innerHTML = pasteZero(currentTime.minutes);
+    //             seconds.innerHTML = pasteZero(currentTime.seconds);
+    //         if (currentTime.total <= 0) {
+    //             clearInterval(timerId);
+    //         }
+    //     }
+
+    // }
+    function updateClock(selector, endTime){
         const timer = document.querySelector(selector),
             days = timer.querySelector("#days"),
             hours = timer.querySelector("#days"),
             minutes = timer.querySelector("#minutes"),
-            seconds = timer.querySelector("#seconds"),
-            timerId = setInterval(updateClock, 1000);
+            seconds = timer.querySelector("#seconds");
 
-        updateClock();
-
-        function updateClock(){
             const currentTime = getTimeRemaining(endTime);
+            if (currentTime.total <= 0) {
+                clearInterval(timerId);
+            } else {
                 days.innerHTML = pasteZero(currentTime.days);
                 hours.innerHTML = pasteZero(currentTime.hours);
                 minutes.innerHTML = pasteZero(currentTime.minutes);
                 seconds.innerHTML = pasteZero(currentTime.seconds);
-            if (currentTime.total <= 0) {
-                clearInterval(timerId);
             }
-        }
 
     }
-    setClock(".timer", deadline);    
+    updateClock(".timer", deadline);
+    const timerId = setInterval(updateClock, 1000,".timer", deadline);
+    // setClock(".timer", deadline);    
 });
