@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => { // create event listener
     }
 
     function pasteZero(num) {
-        if (num >=0 && num < 10){
+        if (num >= 0 && num < 10) {
             num = '0' + num;
         }
         return num;
@@ -84,25 +84,76 @@ document.addEventListener("DOMContentLoaded", () => { // create event listener
     //     }
 
     // }
-    function updateClock(selector, endTime){
+    function updateClock(selector, endTime) {
         const timer = document.querySelector(selector),
             days = timer.querySelector("#days"),
             hours = timer.querySelector("#days"),
             minutes = timer.querySelector("#minutes"),
             seconds = timer.querySelector("#seconds");
 
-            const currentTime = getTimeRemaining(endTime);
-            if (currentTime.total <= 0) {
-                clearInterval(timerId);
-            } else {
-                days.innerHTML = pasteZero(currentTime.days);
-                hours.innerHTML = pasteZero(currentTime.hours);
-                minutes.innerHTML = pasteZero(currentTime.minutes);
-                seconds.innerHTML = pasteZero(currentTime.seconds);
-            }
-
+        const currentTime = getTimeRemaining(endTime);
+        if (currentTime.total <= 0) {
+            clearInterval(timerId);
+        } else {
+            days.innerHTML = pasteZero(currentTime.days);
+            hours.innerHTML = pasteZero(currentTime.hours);
+            minutes.innerHTML = pasteZero(currentTime.minutes);
+            seconds.innerHTML = pasteZero(currentTime.seconds);
+        }
     }
     updateClock(".timer", deadline);
-    const timerId = setInterval(updateClock, 1000,".timer", deadline);
-    // setClock(".timer", deadline);    
+    const timerId = setInterval(updateClock, 1000, ".timer", deadline);
+
+    // Modal
+    const modalOpenButtons = document.querySelectorAll('[data-modal'),
+        modalCloseButton = document.querySelector('[data-close]'),
+        modalWindow = document.querySelector('.modal');
+    // console.log(modalOpenButtons, modalCloseButton, modalWindow);
+
+
+    function hideModal() {
+        modalWindow.style.display = "none";
+        document.body.style.overflow = "visible";
+    }
+
+    function showModal() {
+        // if classes are in css file can be done by adding/removing show/hide classes
+        modalWindow.style.display = "block";
+        document.body.style.overflow = "hidden";
+        modalWindow.style.overflow = "hidden";
+        clearInterval(modalOpenTimer);
+    }
+    // show modal on buttons click
+    modalOpenButtons.forEach(btn => {
+        btn.addEventListener("click", showModal);
+    });
+
+    modalCloseButton.addEventListener("click", hideModal);
+
+    // close modal window on click outside modal
+    modalWindow.addEventListener("click", (event) => {
+        if (event.target === modalWindow) {
+            hideModal();
+        }
+    });
+
+    // close modal window on Escape press
+    document.addEventListener("keydown", (e) => {
+        // console.log(e.code);
+        if (modalWindow.style.display == "block" && e.code === "Escape") {
+            hideModal();
+        }
+    });
+
+    const modalOpenTimer = setTimeout(showModal, 3000);
+
+    function showModalByScroll(){
+        if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight){
+            showModal();
+            window.removeEventListener("scroll", showModalByScroll);
+        }
+    }
+
+    window.addEventListener("scroll", showModalByScroll);
+
 });
