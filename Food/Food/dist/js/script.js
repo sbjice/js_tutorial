@@ -1,3 +1,5 @@
+"use strict";
+
 document.addEventListener("DOMContentLoaded", () => { // create event listener
     // Tabs
     const tabs = document.querySelectorAll(".tabheader__item"), // getting all tabs
@@ -147,8 +149,8 @@ document.addEventListener("DOMContentLoaded", () => { // create event listener
 
     const modalOpenTimer = setTimeout(showModal, 3000);
 
-    function showModalByScroll(){
-        if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight){
+    function showModalByScroll() {
+        if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight) {
             showModal();
             window.removeEventListener("scroll", showModalByScroll);
         }
@@ -156,4 +158,58 @@ document.addEventListener("DOMContentLoaded", () => { // create event listener
 
     window.addEventListener("scroll", showModalByScroll);
 
+    class MenuType {
+        constructor(alt, subtitle, descr, price, parent, ...classes) {
+            this.alt = alt;
+            this.subtitle = subtitle;
+            this.descr = descr;
+            this.img = alt + ".jpg";
+            this.price = price;
+            this.parent = document.querySelector(parent);
+            this.classes = classes;
+            this.renderElement();
+        }
+        renderElement() {
+            const element = document.createElement("div");
+            if (!this.classes.length){
+                this.classes = ["menu__item"];
+            }
+            this.classes.forEach(className => element.classList.add(className));
+            element.innerHTML = `            
+                <img src="img/tabs/${this.alt}.jpg" alt="${this.alt}">
+                <h3 class="menu__item-subtitle">${this.subtitle}</h3>
+                <div class="menu__item-descr">${this.descr}</div>
+                <div class="menu__item-divider"></div>
+                <div class="menu__item-price">
+                    <div class="menu__item-cost">Цена:</div>
+                    <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
+                </div>
+            `;
+            this.parent.append(element);
+        }
+    }
+    // can be done without creating const variables
+    const vegy = new MenuType("vegy", 'Меню "Фитнес"',
+        'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
+        229, ".menu__field > div:nth-child(1)");
+
+    const elite = new MenuType("elite", 'Меню “Премиум”',
+        'В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!',
+        550, ".menu__field > div:nth-child(1)", "menu__item");
+
+    const post = new MenuType("post", 'Меню "Постное"',
+        'Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.',
+        430, ".menu__field > div:nth-child(1)", "menu__item");
+
 });
+
+
+// function showThis(a, b){
+//     console.log(this);
+//     function sum() {
+//         console.log(this);
+//         return this.a + this.b;
+//     }
+//     console.log(sum());
+// }
+// showThis(9, 3);
